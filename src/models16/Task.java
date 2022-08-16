@@ -16,7 +16,11 @@ import javax.persistence.Table;
     @NamedQuery( // 主キー以外の項目などで検索し、複数件の結果を取得したい場合に定義する
         name = "getAllMessages",
         query = "SELECT m FROM Task AS m ORDER BY m.id DESC" // この SELECT文に getAllMessages という名前をつけるという記述
-    )                                                                                                                                     // このJPQLでの "SELECT ｍ" は SQL での "SELECT *" のこと
+    ),
+    @NamedQuery(
+            name = "getTasksCount",
+            query = "SELECT COUNT(m) FROM Task AS m"
+            )                                                                                                                                     // このJPQLでの "SELECT ｍ" は SQL での "SELECT *" のこと
 })
 @Table(name = "tasks")
 public class Task {
